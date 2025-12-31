@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Private Page</title>
+
+<!-- GOOGLE FONT (BODY) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: 'WhisperingSignature';
+  src: url('WhisperingSignature.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffd6e8, #fff);
+}
+
+/* PAGE */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 40px;
+  animation: fade 0.6s ease;
+}
+.page.active { display: block; }
+
+/* SHARED CARD */
+.white-card {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  border: 2px solid #ff4d88;
+  box-shadow: 0 12px 30px rgba(255,105,180,0.25);
+}
+
+/* TITLE */
+.main-title {
+  text-align: center;
+  font-family: 'WhisperingSignature', cursive;
+  font-size: 3rem;
+  color: #ff4d88;
+  letter-spacing: 2px;
+}
+
+/* LOGIN BOX */
+.login-box {
+  max-width: 360px;
+  margin: 60px auto;
+  text-align: center;
+}
+.login-box p { color: #ff4d88; }
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  margin: 15px 0;
+  text-align: center;
+  background: #fff0f6;
+}
+
+.login-box button {
+  background: #ff4d88;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+#error { color: red; }
+
+/* MENU */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.menu-card {
+  background: white;
+  border: 2px solid #ff4d88;
+  border-radius: 20px;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #ff4d88;
+  transition: all 0.4s ease;
+}
+
+.menu-card.active { transform: scale(1.15); }
+.menu-card.inactive { transform: scale(0.85); opacity: 0.6; }
+
+/* CONTENT */
+.content {
+  display: none;
+  animation: fade 0.5s ease;
+}
+.content.active { display: block; }
+
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #ff4d88;
+  margin-bottom: 20px;
+}
+
+/* LETTER */
+.letter-box {
+  background: #fff0f6;
+  padding: 25px;
+  border-radius: 20px;
+  line-height: 1.8;
+}
+
+/* MUSIC */
+.song {
+  background: #fff0f6;
+  padding: 15px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.song-title {
+  font-weight: 500;
+  color: #ff4d88;
+}
+
+.song-artist {
+  font-size: 0.9rem;
+  color: #777;
+}
+.song-artist u { color: #ff4d88; }
+
+.player iframe {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  margin-top: 15px;
+  border: none;
+}
+
+/* REMINDERS */
+.reminder {
+  background: #fff0f6;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 14px;
+  border-left: 6px solid #ff4d88;
+}
+
+/* ANIMATION */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login-page" class="page active">
+  <h1 class="main-title">Dearest, Bubba</h1>
+
+  <div class="login-box white-card">
+    <p>Enter the important date</p>
+    <input type="password" id="password" placeholder="••••••">
+    <button onclick="checkPassword()">Enter</button>
+    <div id="error"></div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="home-page" class="page">
+  <div class="menu">
+    <div class="menu-card" onclick="showSection('letter', this)">Letter 💌</div>
+    <div class="menu-card" onclick="showSection('music', this)">Music 🎵</div>
+    <div class="menu-card" onclick="showSection('notes', this)">Reminders 📑</div>
+  </div>
+
+  <!-- LETTER -->
+  <section id="letter" class="content">
+    <h2>My Letter For You</h2>
+    <div class="white-card letter-box">
+      Hi, aj ko! Happy New Year po, bubba!<br><br>
+      Nag-umpisa nanaman yung bagong taon na kasama kita kaya gusto ko maging
+      memorable sayo to. Gusto ko lang din magpasalamat kasi nasa tabi kita
+      palagi kahit na minsan nagkakaron tayo ng tampuhan at nawawalan ng oras
+      pero napag-uusapan natin at naaayos.<br><br>
+      Ikaw pinakamagandang nangyari sa akin ngayong taon!<br><br>
+      Happy New Year ulit, bubba! 🥳🎉
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music" class="content">
+    <h2>Songs that remind me of you</h2>
+    <div class="white-card">
+
+      <div class="song" onclick="playSong('haFZP92AqC8')"><div class="song-title">Dalangin</div><div class="song-artist">by <u>Earl Agustin</u></div></div>
+      <div class="song" onclick="playSong('VHV8xYK7esY')"><div class="song-title">Saksi ang Langit</div><div class="song-artist">by <u>December Avenue</u></div></div>
+      <div class="song" onclick="playSong('jvpA9cRUoUM')"><div class="song-title">Like a Rose</div><div class="song-artist">by <u>A1</u></div></div>
+      <div class="song" onclick="playSong('Ie4yrtb5Cyc')"><div class="song-title">Crazy for You</div><div class="song-artist">by <u>Madonna</u></div></div>
+      <div class="song" onclick="playSong('et_MRWnEuz8')"><div class="song-title">Simpleng Tulad Mo</div><div class="song-artist">by <u>Daniel Padilla</u></div></div>
+      <div class="song" onclick="playSong('iOT_zuDHvVk')"><div class="song-title">Every Breath You Take</div><div class="song-artist">by <u>The Police</u></div></div>
+      <div class="song" onclick="playSong('tGv7CUutzqU')"><div class="song-title">About You</div><div class="song-artist">by <u>The 1975</u></div></div>
+      <div class="song" onclick="playSong('51Jn7_lW58o')"><div class="song-title">Tahanan</div><div class="song-artist">by <u>Adie</u></div></div>
+      <div class="song" onclick="playSong('0Gl2QnHNpkA')"><div class="song-title">As Long As You Love Me</div><div class="song-artist">by <u>Backstreet Boys</u></div></div>
+      <div class="song" onclick="playSong('r27t3H36jmU')"><div class="song-title">You'll Be in My Heart</div><div class="song-artist">by <u>NIKI</u></div></div>
+      <div class="song" onclick="playSong('fCUa7vxhgKo')"><div class="song-title">Tulad Mo</div><div class="song-artist">by <u>TJ Monteverde</u></div></div>
+
+      <div class="player"><iframe id="player" allow="autoplay"></iframe></div>
+    </div>
+  </section>
+
+  <!-- NOTES -->
+  <section id="notes" class="content">
+    <h2>Things to Remember</h2>
+    <div class="white-card">
+      <div class="reminder">Take care of yourself</div>
+      <div class="reminder">Get enough sleep</div>
+      <div class="reminder">Always eat on time</div>
+      <div class="reminder">Be kind to yourself</div>
+      <div class="reminder">Don't overwork yourself</div>
+      <div class="reminder">Take a short break if you're tired</div>
+    </div>
+  </section>
+</div>
+
+<script>
+function checkPassword() {
+  if (document.getElementById("password").value === "113024") {
+    document.getElementById("login-page").classList.remove("active");
+    document.getElementById("home-page").classList.add("active");
+  } else {
+    document.getElementById("error").textContent = "Wrong password";
+  }
+}
+
+function showSection(id, element) {
+  document.querySelectorAll(".content").forEach(c => c.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll(".menu-card").forEach(card => {
+    card.classList.remove("active");
+    card.classList.add("inactive");
+  });
+
+  element.classList.add("active");
+  element.classList.remove("inactive");
+}
+
+function playSong(id) {
+  document.getElementById("player").src =
+    "https://www.youtube.com/embed/" + id + "?autoplay=1";
+}
+</script>
+
+</body>
+</html>
